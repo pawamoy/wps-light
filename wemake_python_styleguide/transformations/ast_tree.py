@@ -1,6 +1,5 @@
 import ast
 
-from pep8ext_naming import NamingChecker
 from typing_extensions import final
 
 from wemake_python_styleguide.transformations.ast.bugfixes import (
@@ -10,6 +9,9 @@ from wemake_python_styleguide.transformations.ast.bugfixes import (
 from wemake_python_styleguide.transformations.ast.enhancements import (
     set_if_chain,
     set_node_context,
+)
+from wemake_python_styleguide.vendor.pep8_naming import (
+    NamingChecker,
 )
 
 
@@ -22,7 +24,7 @@ class _ClassVisitor(ast.NodeVisitor):
         self.transformer = transformer
 
     def visit_ClassDef(self, node: ast.ClassDef) -> None:  # noqa: N802
-        self.transformer.tag_class_functions(node)
+        self.transformer.tag_class_functions(node)  # type: ignore
         self.generic_visit(node)
 
 
@@ -56,7 +58,7 @@ def _set_function_type(tree: ast.AST) -> ast.AST:
     .. versionchanged:: 0.3.0
 
     """
-    transformer = _ClassVisitor(NamingChecker(tree, 'stdin'))
+    transformer = _ClassVisitor(NamingChecker(tree, 'stdin'))  # type: ignore
     transformer.visit(tree)
     return tree
 

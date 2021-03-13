@@ -1,7 +1,7 @@
 import tokenize
 from typing import Tuple
 
-from flake8_quotes.docstring_detection import (  # noqa: WPS113, F401
+from wemake_python_styleguide.vendor.flake8_quotes import (  # noqa: WPS113, F401, E501
     get_docstring_tokens as get_docstring_tokens,
 )
 
