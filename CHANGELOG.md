@@ -15,6 +15,17 @@ Semantic versioning in our case means:
   There are no major releases right now: we are still at `0.x.y` version.
   But, in the future we might change the configuration names / logic,
   change the client facing API, change code conventions signigicantly, etc.
+  
+  
+## 0.15.3 WIP
+
+### Bugfixes
+
+- Fixes `UselessReturningElseViolation` to not report `else` with `break` #1958
+
+### Misc
+
+- Adds documentation (and test) for how to run project on Jupyter Notebooks
 
 
 ## 0.15.2
