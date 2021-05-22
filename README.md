@@ -2,6 +2,10 @@
 
 *wemake-python-styleguide*, but lighter.
 
+```bash
+pip install wps-light
+```
+
 This project is simply a fork of
 [wemake-python-styleguide](https://github.com/wemake-services/wemake-python-styleguide),
 **without these flake8 plugins dependencies**:
@@ -20,7 +24,5 @@ This project is simply a fork of
 - flake8-rst-docstrings
 - pep8-naming
 - darglint
-
-It can still be installed and used as a flake8 plugin.
 
 Please refer to [wemake-python-styleguide's documentation](https://wemake-python-stylegui.de/en/latest/).
