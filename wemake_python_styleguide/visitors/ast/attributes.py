@@ -34,23 +34,13 @@ class WrongAttributeVisitor(BaseNodeVisitor):
     ))
 
     def visit_Attribute(self, node: ast.Attribute) -> None:
-        """
-        Checks the `Attribute` node.
-
-        Raises:
-            ProtectedAttributeViolation
-            DirectMagicAttributeAccessViolation
-
-        """
+        """Checks the `Attribute` node."""
         self._check_protected_attribute(node)
         self._check_magic_attribute(node)
         self.generic_visit(node)
 
     def _is_super_called(self, node: ast.Call) -> bool:
-        if isinstance(node.func, ast.Name):
-            if node.func.id == 'super':
-                return True
-        return False
+        return isinstance(node.func, ast.Name) and node.func.id == 'super'
 
     def _ensure_attribute_type(self, node: ast.Attribute, exception) -> None:
         if isinstance(node.value, ast.Name):

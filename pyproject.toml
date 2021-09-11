@@ -8,7 +8,7 @@ style = "styles/nitpick-style-wemake.toml"
 
 [tool.poetry]
 name = "wps-light"
-version = "0.15.2"
+version = "0.15.3"
 description = "The strictest and most opinionated python linter ever (lighter fork)."
 
 license = "MIT"
@@ -68,25 +68,25 @@ importlib-metadata = {version = "*", python = "<3.8"}
 flake8-polyfill = "^1.0.2"
 
 [tool.poetry.dev-dependencies]
-nitpick = "^0.26"
-flake8-pytest-style = "^1.4"
+nitpick = "^0.27"
+flake8-pytest-style = "^1.5"
 
 pytest-cov = "^2.12"
-coverage-conditional-plugin = "^0.3"
-pytest-randomly = "^3.8"
+coverage-conditional-plugin = "^0.4"
+pytest-randomly = "^3.10"
 pytest = "^6.2"
 snapshottest = "^0.6"
-hypothesis = "^6.13"
+hypothesis = "^6.20"
 hypothesmith = "^0.1"
 
-mypy = "^0.812"
+mypy = "^0.910"
 
 docutils = "^0.17"
-sphinx = "^4.0"
+sphinx = "^4.1"
 sphinx-autodoc-typehints = "^1.12"
-sphinxcontrib-mermaid = "^0.6"
-doc8 = "^0.8"
-added-value = "^0.15"
+sphinxcontrib-mermaid = "^0.7"
+doc8 = "^0.9"
+added-value = "^0.18"
 tomlkit = "^0.7"
 
 safety = "^1.10"
@@ -97,5 +97,5 @@ astboom = "^0.4"
 tokelor = "^0.1"
 astpath = "^0.9"
 lxml = "^4.6"
-m2r2 = "^0.2"
-nbqa = "^0.8.1"
+m2r2 = "^0.3"
+nbqa = "^1.1.0"

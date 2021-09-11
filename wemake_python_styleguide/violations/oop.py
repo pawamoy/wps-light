@@ -165,7 +165,7 @@ class StaticMethodViolation(ASTViolation):
     .. versionchanged:: 0.11.0
 
     See also:
-       webucator.com/blog/2016/05/when-to-use-static-methods-in-python-never
+       webucator.com/article/when-to-use-static-methods-in-python-never
 
     """
 
@@ -643,17 +643,17 @@ class UnpythonicGetterSetterViolation(ASTViolation):
         # Correct:
         class Example(object):
             def __init__(self):
-                self._attribute = None
+                self.attribute = None
 
         # Wrong:
         class Example(object):
             def __init__(self):
-                self.attribute = None
+                self._attribute = None
 
-            def set_attribute(self):
+            def set_attribute(self, value):
                 ...
 
-            def get_attribute(self, value):
+            def get_attribute(self):
                 ...
 
     .. versionadded:: 0.15.0

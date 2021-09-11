@@ -1,12 +1,12 @@
 # This file is used to setup env
 # to generate documentation.
 
-sphinx==3.5.3
+sphinx==4.1.2
 sphinx_autodoc_typehints==1.12.0
-sphinxcontrib-mermaid==0.6.3
+sphinxcontrib-mermaid==0.7.1
 recommonmark==0.7.1
-m2r2==0.2.7
-added-value==0.15.0
+m2r2==0.3.1
+added-value==0.20.0
 tomlkit==0.7.2
 docutils==0.17.1
 
@@ -14,5 +14,5 @@ docutils==0.17.1
 # other dependencies are just ignored or
 # goes to `autodoc_mock_imports` in `conf.py`:
 flake8==3.9.2
-typing-extensions==3.10.0.0
+typing-extensions==3.10.0.2
 attrs==21.2.0
