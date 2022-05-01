@@ -47,7 +47,7 @@ Summary
    TooManyForsInComprehensionViolation
    TooManyExceptCasesViolation
    OverusedStringViolation
-   TooLongYieldTupleViolation
+   TooLongOutputTupleViolation
    TooLongCompareViolation
    TooLongTryBodyViolation
    TooManyPublicAttributesViolation
@@ -89,7 +89,7 @@ Structure complexity
 .. autoclass:: TooManyForsInComprehensionViolation
 .. autoclass:: TooManyExceptCasesViolation
 .. autoclass:: OverusedStringViolation
-.. autoclass:: TooLongYieldTupleViolation
+.. autoclass:: TooLongOutputTupleViolation
 .. autoclass:: TooLongCompareViolation
 .. autoclass:: TooLongTryBodyViolation
 .. autoclass:: TooManyPublicAttributesViolation
@@ -851,11 +851,15 @@ class TooManyExceptCasesViolation(ASTViolation):
 
 @final
 class OverusedStringViolation(MaybeASTViolation):
-    """
-    Forbid the overuse of string constants.
+    r"""
+    Forbid the overuse of string literals.
 
     We allow to use strings without any restrictions as annotations for
     variables, arguments, return values, and class attributes.
+
+    Some common string literals like dot `'.'`, comma `','`, empty string `''`,
+    single space `' '`, new line `'\n'`, `'\r\n'` and tabulator `'\t'`
+    do not count against string literal overuse limit.
 
     Reasoning:
         When some string is used more than several time in your code,
@@ -875,27 +879,29 @@ class OverusedStringViolation(MaybeASTViolation):
 
     """
 
-    error_template = 'Found string constant over-use: {0}'
+    error_template = 'Found string literal over-use: {0}'
     code = 226
 
 
 @final
-class TooLongYieldTupleViolation(ASTViolation):
+class TooLongOutputTupleViolation(ASTViolation):
     """
-    Forbid yielding tuples that are too long.
+    Forbid returning or yielding tuples that are too long.
 
     Reasoning:
-        Long yield tuples complicate generator usage.
+        Long output tuples complicate function or generator usage.
         This rule helps to reduce complication.
 
     Solution:
         Use lists of similar type or wrapper objects.
 
     .. versionadded:: 0.10.0
+    .. versionchanged:: 0.16.0
+
 
     """
 
-    error_template = 'Found too long yield tuple: {0}'
+    error_template = 'Found too long function output tuple: {0}'
     code = 227
 
 

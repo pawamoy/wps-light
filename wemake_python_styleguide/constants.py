@@ -198,6 +198,7 @@ ALL_MAGIC_METHODS: Final = frozenset((
     '__delitem__',
     '__missing__',
     '__iter__',
+    '__next__',
     '__reversed__',
     '__contains__',
 
@@ -254,6 +255,8 @@ ALL_MAGIC_METHODS: Final = frozenset((
     '__trunc__',
     '__floor__',
     '__ceil__',
+    '__oct__',
+    '__hex__',
 
     '__enter__',
     '__exit__',
@@ -263,6 +266,43 @@ ALL_MAGIC_METHODS: Final = frozenset((
     '__anext__',
     '__aenter__',
     '__aexit__',
+
+    # pickling
+    '__getnewargs_ex__',
+    '__getnewargs__',
+    '__getstate__',
+    '__setstate__',
+    '__reduce__',
+    '__reduce_ex__',
+    '__getinitargs__',
+
+    # Python 2
+    '__long__',
+    '__coerce__',
+    '__nonzero__',
+    '__unicode__',
+    '__cmp__',
+
+    # copy
+    '__copy__',
+    '__deepcopy__',
+
+    # dataclasses
+    '__post_init__',
+
+    # attrs:
+    '__attrs_pre_init__',
+    '__attrs_init__',
+    '__attrs_post_init__',
+
+    # inspect
+    '__signature__',
+
+    # os.path
+    '__fspath__',
+
+    # sys
+    '__sizeof__',
 ))
 
 #: List of magic methods that are forbidden to use.
@@ -366,8 +406,8 @@ MAGIC_NUMBERS_WHITELIST: Final = frozenset((
 #: Maximum amount of ``pragma`` no-cover comments per module.
 MAX_NO_COVER_COMMENTS: Final = 5
 
-#: Maximum length of ``yield`` ``tuple`` expressions.
-MAX_LEN_YIELD_TUPLE: Final = 5
+#: Maximum length of ``yield`` or ``return`` ``tuple`` expressions.
+MAX_LEN_TUPLE_OUTPUT: Final = 5
 
 #: Maximum number of compare nodes in a single expression.
 MAX_COMPARES: Final = 2

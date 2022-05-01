@@ -12,14 +12,19 @@ from wemake_python_styleguide.logic import walk, walrus
 from wemake_python_styleguide.logic.naming import name_nodes
 from wemake_python_styleguide.logic.nodes import get_parent
 from wemake_python_styleguide.logic.tree import keywords, operators
-from wemake_python_styleguide.logic.tree.exceptions import get_exception_name
+from wemake_python_styleguide.logic.tree.exceptions import (
+    get_cause_name,
+    get_exception_name,
+)
 from wemake_python_styleguide.logic.tree.variables import (
     is_valid_block_variable_definition,
 )
 from wemake_python_styleguide.types import AnyFunctionDef, AnyNodes, AnyWith
 from wemake_python_styleguide.violations.best_practices import (
+    BareRaiseViolation,
     BaseExceptionRaiseViolation,
     ContextManagerVariableDefinitionViolation,
+    RaiseFromItselfViolation,
     RaiseNotImplementedViolation,
     WrongKeywordConditionViolation,
     WrongKeywordViolation,
@@ -54,6 +59,8 @@ class WrongRaiseVisitor(BaseNodeVisitor):
     def visit_Raise(self, node: ast.Raise) -> None:
         """Checks how ``raise`` keyword is used."""
         self._check_exception_type(node)
+        self._check_bare_raise(node)
+        self._check_raise_from_itself(node)
         self.generic_visit(node)
 
     def _check_exception_type(self, node: ast.Raise) -> None:
@@ -64,6 +71,20 @@ class WrongRaiseVisitor(BaseNodeVisitor):
             self.add_violation(
                 BaseExceptionRaiseViolation(node, text=exception_name),
             )
+
+    def _check_bare_raise(self, node: ast.Raise) -> None:
+        if node.exc is None:
+            parent_except = walk.get_closest_parent(node, ast.ExceptHandler)
+
+            if not parent_except:
+                self.add_violation(BareRaiseViolation(node))
+
+    def _check_raise_from_itself(self, node: ast.Raise) -> None:
+        if node.exc and node.cause:
+            names_are_same = get_exception_name(node) == get_cause_name(node)
+
+            if names_are_same:
+                self.add_violation(RaiseFromItselfViolation(node))
 
 
 @final

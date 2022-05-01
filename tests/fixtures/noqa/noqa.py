@@ -788,3 +788,31 @@ matrix = [
    some(number) for numbers in matrix
    for number in numbers # noqa: WPS361
 ]
+
+def bare_raise_function():
+    raise # noqa: WPS467
+
+for _, something in enumerate(collection): # noqa: WPS468
+    report(something)
+
+variable_to_store_things = {
+    definitely_something
+    for _, definitely_something in enumerate(collection) # noqa: WPS468
+}
+
+try:  # noqa: WPS328
+    raise TypeError('Type Error')
+except TypeError as raise_from_itself:
+    my_print(raise_from_itself)
+    raise raise_from_itself from raise_from_itself  # noqa: WPS469
+
+
+class TestClass(object, **{}):  # noqa: WPS470
+    """Docs."""
+
+
+secondary_slice = items[1:][:3]  # noqa: WPS471
+first, *_rest = some_collection  # noqa: WPS472
+
+def foo2_func():
+    return (1, 2, 3, 4, 5, 6)  # noqa: WPS227
