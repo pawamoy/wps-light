@@ -34,6 +34,7 @@ MAX_NOQA_COMMENTS: Final = 10  # guessed
 NESTED_CLASSES_WHITELIST: Final = (
     'Meta',  # django forms, models, drf, etc
     'Params',  # factoryboy specific
+    'Config',  # pydantic spesific
 )
 
 #: Domain names that are removed from variable names' blacklist.
@@ -129,3 +130,10 @@ MAX_IMPORT_FROM_MEMBERS: Final = 8  # guessed
 
 #: Maximum number of variables in a ``tuple`` unpacking statement.
 MAX_TUPLE_UNPACK_LENGTH: Final = 4  # guessed
+
+# ==========
+# Formatter:
+# ==========
+
+#: Whether to show violation shortlinks in the formatter output.
+SHOW_VIOLATION_LINKS: Final = False

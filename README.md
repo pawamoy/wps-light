@@ -2,7 +2,6 @@
 
 *wemake-python-styleguide*, but lighter.
 
-
 ```bash
 pip install wps-light
 ```
