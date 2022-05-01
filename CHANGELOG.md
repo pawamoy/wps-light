@@ -17,6 +17,15 @@ Semantic versioning in our case means:
   change the client facing API, change code conventions significantly, etc.
 
 
+## 0.16.1
+
+### Bugfixes
+
+- Fixes crash on `'Literal["raise"]'` annotation #2341
+- Fixes `WPS471` was not detected on complex assignment targets #2301
+- Fixes `flake8-bandit` and `bandit` version conflict #2368
+
+
 ## 0.16.0
 
 ## Features
@@ -29,7 +38,7 @@ Semantic versioning in our case means:
 - Added `RedundantEnumerateViolation` #1825
 - Adds `RaiseFromItselfViolation` #2133
 - Adds `ConsecutiveSlicesViolation` #2064
-- Adds `KwargsUnpackingInClassDefinitionViolation` #1714
+- Adds `KwargsUnpackingInClassDefinitionViolation` #1754
 - `DirectMagicAttributeAccessViolation` now only flags instances for which
   a known alternative exists #2268
 - Forbids getting collection element of list by unpacking #1824
