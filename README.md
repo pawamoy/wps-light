@@ -2,6 +2,8 @@
 
 *wemake-python-styleguide*, but lighter.
 
+**This project is not maintained. The author now uses Ruff insteaf of Flake8 and plugins.**
+
 ```bash
 pip install wps-light
 ```
